@@ -5,26 +5,25 @@ module DocumentTemplator
       @templator = templator
       @template_file = template_file
       @result_file = result_file
-      @result = nil
     end
 
     def call
-      read
-      change_content
-      write
+      content = read(@template_file)
+      changed_content = change_content(content)
+      write(changed_content)
       @result_file
     end
 
-    def read
-      @result = File.read(@template_file)
+    def read(template_file)
+      File.read(template_file)
     end
 
-    def change_content
-      @result = @templator.call(@result)
+    def change_content(content)
+      @templator.call(content)
     end
 
-    def write
-      File.open(@result_file, 'w') { |file| file.write(@result) }
+    def write(changed_content)
+      File.open(@result_file, 'w') { |file| file.write(changed_content) }
     end
   end
 end

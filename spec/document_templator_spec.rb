@@ -43,7 +43,7 @@ RSpec.describe DocumentTemplator do
       end
     end
 
-    context 'woth locals variables' do
+    context 'with locals variables' do
       let(:locals) do
         {
           name: 'John Doe',
@@ -64,6 +64,14 @@ Your Balance is 700
 }
         expect(File.read(result_file_path)).to eql(result_file_body)
       end
+    end
+  end
+
+  describe 'odt template without erb instructions' do
+    let(:template_name) { 'without_erb_instructions.odt' }
+
+    specify do
+      expect(subject.generate(template_path, result_file_path)).to eq(result_file_path)
     end
   end
 end
