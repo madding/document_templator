@@ -1,8 +1,8 @@
 Struct.new('Income', :name, :amount)
 
 RSpec.describe DocumentTemplator do
-  let(:path_to_template_folder) { File.join('./spec', 'templates') }
-  let(:path_to_result_folder) { File.join('./spec', 'results') }
+  let(:path_to_template_folder) { File.join(__dir__, 'templates') }
+  let(:path_to_result_folder) { File.join(__dir__, 'results') }
   let(:template_name) { '' }
   let(:template_path) { File.join(path_to_template_folder, template_name) }
   let(:result_file_path) { File.join(path_to_result_folder, template_name) }
@@ -17,8 +17,7 @@ RSpec.describe DocumentTemplator do
     let(:template_name) { 'not_exist_file.txt' }
 
     specify do
-      puts ENV['TRAVIS_BUILD_DIR']
-      puts ENV.inspect
+      puts `pwd`
       expect { subject.generate(template_path, '') }.to raise_error("File #{template_path} not found")
     end
   end

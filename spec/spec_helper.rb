@@ -13,7 +13,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    result_dir = File.join('./spec', 'results')
+    result_dir = File.join(__dir__, 'results')
 
     Dir.foreach(result_dir) do |file_name|
       next if %w(. ..).include?(file_name)
