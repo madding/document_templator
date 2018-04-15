@@ -1,0 +1,6 @@
+Hi <%= name %>! How are you doing ?
+Your incomes:
+<% incomes.each do |income| %>
+<%= income.name %> | <%= income.amount %>
+<% end %>
+Your Balance is <%= incomes.sum(&:amount) %>
