@@ -13,13 +13,11 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    result_dir = File.join(__dir__, 'results')
+    result_dir = File.join('./spec', 'results')
 
-    if File.exist?(result_dir)
-      Dir.foreach(result_dir) do |file_name|
-        next if %w(. ..).include?(file_name)
-        File.delete(File.join(result_dir, file_name))
-      end
+    Dir.foreach(result_dir) do |file_name|
+      next if %w(. ..).include?(file_name)
+      File.delete(File.join(result_dir, file_name))
     end
   end
 end

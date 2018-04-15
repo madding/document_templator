@@ -1,8 +1,8 @@
 Struct.new('Income', :name, :amount)
 
 RSpec.describe DocumentTemplator do
-  let(:path_to_template_folder) { File.join(__dir__, 'templates') }
-  let(:path_to_result_folder) { File.join(__dir__, 'results') }
+  let(:path_to_template_folder) { File.join('./spec', 'templates') }
+  let(:path_to_result_folder) { File.join('./spec', 'results') }
   let(:template_name) { '' }
   let(:template_path) { File.join(path_to_template_folder, template_name) }
   let(:result_file_path) { File.join(path_to_result_folder, template_name) }
