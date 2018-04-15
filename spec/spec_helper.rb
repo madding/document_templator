@@ -14,7 +14,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     result_dir = File.join(__dir__, 'results')
-    puts result_dir
+    return unless File.exist?(result_dir)
     Dir.foreach(result_dir) do |file_name|
       next if %w(. ..).include?(file_name)
       File.delete(File.join(result_dir, file_name))
