@@ -1,3 +1,5 @@
+Struct.new('Income', :name, :amount)
+
 RSpec.describe DocumentTemplator do
   let(:path_to_template_folder) { File.join(__dir__, 'templates') }
   let(:path_to_result_folder) { File.join(__dir__, 'results') }
@@ -6,7 +8,6 @@ RSpec.describe DocumentTemplator do
   let(:result_file_path) { File.join(path_to_result_folder, template_name) }
 
   subject { DocumentTemplator }
-  before { Struct.new('Income', :name, :amount) }
 
   it 'has a version number' do
     expect(subject::VERSION).not_to be nil
