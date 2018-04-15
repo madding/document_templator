@@ -17,6 +17,8 @@ RSpec.describe DocumentTemplator do
     let(:template_name) { 'not_exist_file.txt' }
 
     specify do
+      puts ENV['TRAVIS_BUILD_DIR']
+      puts ENV.inspect
       expect { subject.generate(template_path, '') }.to raise_error("File #{template_path} not found")
     end
   end
